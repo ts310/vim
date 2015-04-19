@@ -93,6 +93,12 @@
   set incsearch
   set viminfo='100,f1
 
+  " folding
+  set foldmethod=indent
+  set foldenable
+  set foldnestmax=10
+  set foldlevelstart=10
+
   " mapping
   let mapleader = " "
 
@@ -131,6 +137,11 @@
     \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
     \ }
   let g:ctrlp_show_hidden = 1
+  let g:ctrlp_match_window = 'bottom,order:ttb'
+  let g:ctrlp_switch_buffer = 0
+  let g:ctrlp_working_path_mode = 0
+  nnoremap <c-]> :CtrlPtjump<cr>
+  vnoremap <c-]> :CtrlPtjumpVisual<cr>
 " }}}
 
 " ------------------------------------------------------------
@@ -158,6 +169,12 @@
   nmap [VCS] <Nop>
   nmap <Leader>v [VCS]
   let g:VCSCommandMapPrefix = '[VCS]'
+  cabbrev vcsgotooriginal VCSGotoOriginal
+  cabbrev vcslog VCSLog
+  cabbrev vcsreview VCSReview
+  cabbrev vcsstatus VCSStatus
+  cabbrev vcsupdate VCSUpdate
+  cabbrev vcsvimdiff VCSVimDiff
 " }}}
 
 " ------------------------------------------------------------
@@ -187,18 +204,6 @@
   map <silent> [Tag]x :tabclose<CR>
   map <silent> [Tag]n :tabnext<CR>
   map <silent> [Tag]p :tabprevious<CR>
-" }}}
-
-" ------------------------------------------------------------
-" vcscommnad
-" ------------------------------------------------------------
-" {{{
-  cabbrev vcsgotooriginal VCSGotoOriginal
-  cabbrev vcslog VCSLog
-  cabbrev vcsreview VCSReview
-  cabbrev vcsstatus VCSStatus
-  cabbrev vcsupdate VCSUpdate
-  cabbrev vcsvimdiff VCSVimDiff
 " }}}
 
 " ------------------------------------------------------------
