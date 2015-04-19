@@ -1,26 +1,3 @@
-" ------------------------------------------------------------
-" Plugin
-" ------------------------------------------------------------
-" {{{
-  set nocompatible
-  filetype off
-
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-
-  Plugin 'gmarik/Vundle.vim'
-  Plugin 'tpope/vim-sensible'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'rking/ag.vim'
-  Plugin 'AndrewRadev/linediff.vim'
-  Plugin 'gregsexton/gitv'
-  Plugin 'kien/ctrlp.vim'
-  Plugin 'tacahiroy/ctrlp-funky'
-  Plugin 'd11wtq/ctrlp_bdelete.vim'
-  Plugin 'scrooloose/syntastic'
   Plugin 'vim-scripts/Align'
   Plugin 'tpope/vim-rails'
   Plugin 'tpope/vim-bundler'
