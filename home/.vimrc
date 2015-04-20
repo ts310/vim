@@ -94,8 +94,8 @@
   set viminfo='100,f1
 
   " folding
-  set foldmethod=indent
   set foldenable
+  set foldmethod=indent
   set foldnestmax=10
   set foldlevelstart=10
 
@@ -133,13 +133,14 @@
 " {{{
   let g:ctrlp_extensions = ['funky']
   let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor',
+    \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor|\cache',
     \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
     \ }
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_match_window = 'bottom,order:ttb'
   let g:ctrlp_switch_buffer = 0
   let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_max_files = 0
   nnoremap <c-]> :CtrlPtjump<cr>
   vnoremap <c-]> :CtrlPtjumpVisual<cr>
 " }}}
