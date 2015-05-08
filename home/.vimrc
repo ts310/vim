@@ -29,6 +29,9 @@
   Plugin 'vim-scripts/vcscommand.vim'
   Plugin 'tpope/vim-surround'
   Plugin 'ivalkeen/vim-ctrlp-tjump'
+  Plugin 'mattn/emmet-vim'
+  Plugin 'bling/vim-airline'
+  Plugin 'keith/swift.vim'
 
   call vundle#end()
   filetype plugin indent on
@@ -55,7 +58,7 @@
   set tags+=.tags
   set laststatus=2
   set cmdheight=1
-  set cursorline
+  set nocursorline
   set imdisable
 
   " Optimization
@@ -81,7 +84,6 @@
   set listchars=eol:¬,tab:▸\ ,nbsp:.
 
   " wrapping
-  set textwidth=100
   set wrap
   set wrapscan
   set linebreak
@@ -91,6 +93,7 @@
   set ignorecase
   set smartcase
   set incsearch
+  set hlsearch
   set viminfo='100,f1
 
   " folding
@@ -120,6 +123,28 @@
 " }}}
 
 " ------------------------------------------------------------
+" Syntax
+" ------------------------------------------------------------
+" {{{
+  au FileType make         setlocal ts=8 sts=8 sw=8 noet
+  au FileType yaml         setlocal ts=2 sts=2 sw=2 et
+  au FileType php          setlocal ts=4 sts=4 sw=4 noet foldmethod=indent
+  au FileType smarty       setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
+  au FileType java         setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
+  au FileType vim          setlocal ts=2 sts=2 sw=2 et
+  au FileType html         setlocal ts=2 sts=2 sw=2 et
+  au FileType css          setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
+  au FileType javascript   setlocal ts=4 sts=4 sw=4 et   foldmethod=indent
+  au FileType sh           setlocal ts=2 sts=2 sw=2 et
+  au FileType ruby         setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
+  au FileType sql          setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
+  au BufNewFile,BufRead *.rss     setfiletype xml
+  au BufNewFile,BufRead *.thtml   setfiletype php
+  au BufNewFile,BufRead *.tpl     setfiletype smarty
+  au BufNewFile,BufRead *_spec.rb compiler    rspec
+" }}}
+
+" ------------------------------------------------------------
 " nerdtree
 " ------------------------------------------------------------
 " {{{
@@ -131,9 +156,12 @@
 " ctrlp
 " ------------------------------------------------------------
 " {{{
+  let g:ctrlp_map = '<C-p>'
+  let g:ctrlp_cmd = 'CtrlP'
+  map <Leader>p :CtrlP<CR>
   let g:ctrlp_extensions = ['funky']
   let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git\|node_modules\|bin\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor|\cache',
+    \ 'dir':  '\.git\|node_modules\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor/bundle\|cache',
     \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
     \ }
   let g:ctrlp_show_hidden = 1
@@ -141,16 +169,20 @@
   let g:ctrlp_switch_buffer = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_max_files = 0
+  let g:ctrlp_use_migemo = 1
+  let g:ctrlp_funky_syntax_highlight = 1
   nnoremap <c-]> :CtrlPtjump<cr>
   vnoremap <c-]> :CtrlPtjumpVisual<cr>
+  nnoremap <Leader>fu :CtrlPFunky<Cr>
+  nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 " }}}
 
 " ------------------------------------------------------------
 " ag
 " ------------------------------------------------------------
 " {{{
-  map <leader>ag :Ag -i<space>
   abbrev ag Ag
+  noremap <Leader>ag :Ag -i<space>
 " }}}
 
 " ------------------------------------------------------------
@@ -226,10 +258,16 @@
 " }}}
 
 " ------------------------------------------------------------
-" open-browser
+" emmet
 " ------------------------------------------------------------
 " {{{
-  let g:netrw_nogx = 1 " disable netrw's gx mapping.
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
+  let g:user_emmet_leader_key = '<c-t>'
+" }}}
+
+" ------------------------------------------------------------
+" Vim airline
+" ------------------------------------------------------------
+" {{{
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = ''
 " }}}
