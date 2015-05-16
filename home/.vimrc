@@ -160,10 +160,6 @@
   let g:ctrlp_cmd = 'CtrlP'
   map <Leader>p :CtrlP<CR>
   let g:ctrlp_extensions = ['funky']
-  let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git\|node_modules\|\.hg\|\.svn\|build\|log\|resources\|coverage\|doc\|tmp\|public/assets\|vendor/bundle\|cache',
-    \ 'file': '\.jpg$\|\.exe$\|\.so$\|tags$\|\.dll$'
-    \ }
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_match_window = 'bottom,order:ttb'
   let g:ctrlp_switch_buffer = 0
@@ -171,6 +167,7 @@
   let g:ctrlp_max_files = 0
   let g:ctrlp_use_migemo = 1
   let g:ctrlp_funky_syntax_highlight = 1
+  let g:ctrlp_user_command = 'Ag %s -l --nocolor --hidden -g ""'
   nnoremap <c-]> :CtrlPtjump<cr>
   vnoremap <c-]> :CtrlPtjumpVisual<cr>
   nnoremap <Leader>fu :CtrlPFunky<Cr>
