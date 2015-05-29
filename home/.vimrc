@@ -32,6 +32,9 @@
   Plugin 'mattn/emmet-vim'
   Plugin 'bling/vim-airline'
   Plugin 'keith/swift.vim'
+  Plugin 'slim-template/vim-slim'
+  Plugin 'kchmck/vim-coffee-script'
+  Plugin 'mustache/vim-mustache-handlebars'
 
   call vundle#end()
   filetype plugin indent on
@@ -87,6 +90,7 @@
   set wrap
   set wrapscan
   set linebreak
+  set colorcolumn=80
 
   " search
   set complete+=k
@@ -170,7 +174,7 @@
   map <Leader>p :CtrlP<CR>
   let g:ctrlp_extensions = ['funky']
   let g:ctrlp_show_hidden = 1
-  let g:ctrlp_match_window = 'bottom,order:ttb'
+  let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:40'
   let g:ctrlp_switch_buffer = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_max_files = 0
@@ -199,6 +203,8 @@
   command! Gc :Gcommit
   command! Gw :Gwrite
   command! Gs :Gstatus
+  " remove fugitive buffer when buffer is no longer needed
+  au BufReadPost fugitive://* set bufhidden=delete
 " }}}
 
 " ------------------------------------------------------------
