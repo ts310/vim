@@ -180,7 +180,9 @@
   let g:ctrlp_max_files = 0
   let g:ctrlp_use_migemo = 1
   let g:ctrlp_funky_syntax_highlight = 1
-  let g:ctrlp_user_command = 'Ag %s -l --nocolor --hidden -g ""'
+  let g:ctrlp_user_command = 'Ag %s -l -i --nocolor --hidden -g ""'
+  let g:ctrlp_follow_symlinks = 1
+  let g:ctrlp_max_depth = 0
   nnoremap <c-]> :CtrlPtjump<cr>
   vnoremap <c-]> :CtrlPtjumpVisual<cr>
   nnoremap <Leader>fu :CtrlPFunky<Cr>
