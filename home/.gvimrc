@@ -11,6 +11,6 @@ highlight SpellBad term=underline gui=undercurl guisp=Orange
 "  Macvim
 "  -----------------------------------------
 if has("gui_macvim")
-  set guifont = Source_Code_Pro_Light:h13
+  set guifont=Source_Code_Pro_Light:h13
   macmenu File.Print key=<nop>
 end
