@@ -8,6 +8,7 @@
   set rtp+=~/.vim/bundle/Vundle.vim
   call vundle#begin()
 
+  Plugin 'christoomey/vim-run-interactive'
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-sensible'
   Plugin 'tpope/vim-fugitive'
@@ -35,6 +36,8 @@
   Plugin 'slim-template/vim-slim'
   Plugin 'kchmck/vim-coffee-script'
   Plugin 'mustache/vim-mustache-handlebars'
+  Plugin 'tpope/vim-obsession'
+  Plugin 'dhruvasagar/vim-prosession'
 
   call vundle#end()
   filetype plugin indent on
@@ -106,6 +109,9 @@
   set foldnestmax=10
   set foldlevelstart=10
 
+  " always use vertical diffs
+  set diffopt+=vertical
+
   " mapping
   let mapleader = " "
 
@@ -124,6 +130,9 @@
   " command
   command! Ev edit $MYVIMRC
   command! Rv source $MYVIMRC
+
+  " Run commands that require an interactive shell
+  nnoremap <Leader>ri :RunInInteractiveShell<space>
 " }}}
 
 " ------------------------------------------------------------
@@ -178,11 +187,14 @@
   let g:ctrlp_switch_buffer = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_max_files = 0
+  let g:ctrlp_max_depth = 0
   let g:ctrlp_use_migemo = 1
   let g:ctrlp_funky_syntax_highlight = 1
-  let g:ctrlp_user_command = 'Ag %s -l -i --nocolor --hidden -g ""'
   let g:ctrlp_follow_symlinks = 1
-  let g:ctrlp_max_depth = 0
+  if executable('ag')
+    let g:ctrlp_user_command = 'Ag %s -l --nocolor --hidden -g ""'
+    let g:ctrlp_use_caching = 0
+  endif
   nnoremap <c-]> :CtrlPtjump<cr>
   vnoremap <c-]> :CtrlPtjumpVisual<cr>
   nnoremap <Leader>fu :CtrlPFunky<Cr>
