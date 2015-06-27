@@ -12,6 +12,7 @@
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-sensible'
   Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-endwise'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'scrooloose/nerdtree'
   Plugin 'altercation/vim-colors-solarized'
