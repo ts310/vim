@@ -1,47 +1,43 @@
+set nocompatible
+
 " ------------------------------------------------------------
 " Plugin
 " ------------------------------------------------------------
 " {{{
-  set nocompatible
-  filetype off
+  call plug#begin('~/.vim/plugged')
 
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
+  Plug 'christoomey/vim-run-interactive'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-endwise'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'scrooloose/nerdtree'
+  Plug 'altercation/vim-colors-solarized'
+  Plug 'rking/ag.vim'
+  Plug 'AndrewRadev/linediff.vim'
+  Plug 'gregsexton/gitv'
+  Plug 'kien/ctrlp.vim'
+  Plug 'tacahiroy/ctrlp-funky'
+  Plug 'd11wtq/ctrlp_bdelete.vim'
+  Plug 'scrooloose/syntastic'
+  Plug 'vim-scripts/Align'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-bundler'
+  Plug 'mkitt/tabline.vim'
+  Plug 'tyru/open-browser.vim'
+  Plug 'vim-scripts/vcscommand.vim'
+  Plug 'tpope/vim-surround'
+  Plug 'ivalkeen/vim-ctrlp-tjump'
+  Plug 'mattn/emmet-vim'
+  Plug 'bling/vim-airline'
+  Plug 'keith/swift.vim'
+  Plug 'slim-template/vim-slim'
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'tpope/vim-obsession'
+  Plug 'dhruvasagar/vim-prosession'
 
-  Plugin 'christoomey/vim-run-interactive'
-  Plugin 'gmarik/Vundle.vim'
-  Plugin 'tpope/vim-sensible'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-endwise'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'rking/ag.vim'
-  Plugin 'AndrewRadev/linediff.vim'
-  Plugin 'gregsexton/gitv'
-  Plugin 'kien/ctrlp.vim'
-  Plugin 'tacahiroy/ctrlp-funky'
-  Plugin 'd11wtq/ctrlp_bdelete.vim'
-  Plugin 'scrooloose/syntastic'
-  Plugin 'vim-scripts/Align'
-  Plugin 'tpope/vim-rails'
-  Plugin 'tpope/vim-bundler'
-  Plugin 'mkitt/tabline.vim'
-  Plugin 'tyru/open-browser.vim'
-  Plugin 'vim-scripts/vcscommand.vim'
-  Plugin 'tpope/vim-surround'
-  Plugin 'ivalkeen/vim-ctrlp-tjump'
-  Plugin 'mattn/emmet-vim'
-  Plugin 'bling/vim-airline'
-  Plugin 'keith/swift.vim'
-  Plugin 'slim-template/vim-slim'
-  Plugin 'kchmck/vim-coffee-script'
-  Plugin 'mustache/vim-mustache-handlebars'
-  Plugin 'tpope/vim-obsession'
-  Plugin 'dhruvasagar/vim-prosession'
-
-  call vundle#end()
-  filetype plugin indent on
+  call plug#end()
 " }}}
 
 " ------------------------------------------------------------
