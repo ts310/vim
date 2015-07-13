@@ -36,6 +36,9 @@ set nocompatible
   Plug 'mustache/vim-mustache-handlebars'
   Plug 'tpope/vim-obsession'
   Plug 'dhruvasagar/vim-prosession'
+  Plug 'majutsushi/tagbar'
+  Plug 'schickling/vim-bufonly'
+  Plug 'embear/vim-localvimrc'
 
   call plug#end()
 " }}}
@@ -169,6 +172,7 @@ set nocompatible
 " {{{
   nnoremap <leader>d :NERDTreeToggle<CR>
   nnoremap <leader>nr :NERDTreeFind<CR>
+  let g:NERDTreeWinSize = 24
 " }}}
 
 " ------------------------------------------------------------
