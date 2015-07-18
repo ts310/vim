@@ -29,7 +29,7 @@ set nocompatible
   Plug 'tpope/vim-surround'
   Plug 'ivalkeen/vim-ctrlp-tjump'
   Plug 'mattn/emmet-vim'
-  Plug 'bling/vim-airline'
+  "Plug 'bling/vim-airline'
   Plug 'keith/swift.vim'
   Plug 'slim-template/vim-slim'
   Plug 'kchmck/vim-coffee-script'
@@ -39,6 +39,8 @@ set nocompatible
   Plug 'majutsushi/tagbar'
   Plug 'schickling/vim-bufonly'
   Plug 'embear/vim-localvimrc'
+  Plug 'tpope/vim-dispatch'
+  Plug 'thoughtbot/vim-rspec'
 
   call plug#end()
 " }}}
@@ -297,4 +299,21 @@ set nocompatible
 " {{{
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
+" }}}
+
+" ------------------------------------------------------------
+" Vim rspec
+" ------------------------------------------------------------
+" {{{
+  nmap <Leader>c :call RunCurrentSpecFile()<CR>
+  nmap <Leader>n :call RunNearestSpec()<CR>
+  nmap <Leader>l :call RunLastSpec()<CR>
+  nmap <Leader>a :call RunAllSpecs()<CR>
+" }}}
+
+" ------------------------------------------------------------
+" Vim localvimrc
+" ------------------------------------------------------------
+" {{{
+  let g:localvimrc_ask = 0
 " }}}
