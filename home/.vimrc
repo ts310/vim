@@ -5,7 +5,7 @@ Plug 'christoomey/vim-run-interactive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'rking/ag.vim'
 Plug 'AndrewRadev/linediff.vim'
@@ -23,7 +23,7 @@ Plug 'vim-scripts/vcscommand.vim'
 Plug 'tpope/vim-surround'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'mattn/emmet-vim'
-"Plug 'bling/vim-airline'
+Plug 'bling/vim-airline'
 Plug 'keith/swift.vim'
 Plug 'slim-template/vim-slim'
 Plug 'kchmck/vim-coffee-script'
@@ -36,7 +36,10 @@ Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-dispatch'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-repeat'
-Plug 'svermeulen/vim-easyclip'
+"Plug 'svermeulen/vim-easyclip'
+Plug 'DavidEGx/ctrlp-smarttabs'
+Plug 'schickling/vim-bufonly'
+Plug 'tpope/vim-vinegar'
 call plug#end()
 " }}}
 " basic settings {{{
@@ -136,7 +139,7 @@ let g:NERDTreeWinSize = 24
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlP'
 map <Leader>p :CtrlP<CR>
-let g:ctrlp_extensions = ['funky']
+let g:ctrlp_extensions = ['funky', 'smarttabs']
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:40'
 let g:ctrlp_switch_buffer = 0
@@ -193,7 +196,6 @@ let g:Gitv_DoNotMapCtrlKey = 1
 " }}}
 
 " tab {{{
-set showtabline=2
 nmap [Tab] <Nop>
 nmap     t [Tab]
 for n in range(1, 9)
