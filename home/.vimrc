@@ -40,6 +40,7 @@ Plug 'tpope/vim-repeat'
 Plug 'DavidEGx/ctrlp-smarttabs'
 Plug 'schickling/vim-bufonly'
 Plug 'tpope/vim-vinegar'
+Plug 'fatih/vim-go'
 call plug#end()
 " }}}
 " basic settings {{{
