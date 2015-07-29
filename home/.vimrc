@@ -5,7 +5,7 @@ Plug 'christoomey/vim-run-interactive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'altercation/vim-colors-solarized'
 Plug 'rking/ag.vim'
 Plug 'AndrewRadev/linediff.vim'
@@ -133,6 +133,7 @@ endif
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>nr :NERDTreeFind<CR>
 let g:NERDTreeWinSize = 24
+let g:NERDTreeHijackNetrw = 0
 " }}}
 
 " ctrlp {{{
