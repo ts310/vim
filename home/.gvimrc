@@ -5,6 +5,7 @@ set go-=l
 set go-=L
 set go-=r
 set go-=R
+set go-=e
 highlight SpellBad term=underline gui=undercurl guisp=Orange
 
 " ------------------------------------------
