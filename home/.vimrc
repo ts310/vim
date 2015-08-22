@@ -103,6 +103,8 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 " command
 command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
+" bind K to grep word under cursor
+nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " }}}
 
 " auto command {{{
@@ -152,6 +154,7 @@ let g:ctrlp_use_migemo = 1
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_follow_symlinks = 1
 if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'Ag %s -l --nocolor --hidden -g ""'
   let g:ctrlp_use_caching = 0
 endif
