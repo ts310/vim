@@ -44,6 +44,7 @@ Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 call plug#end()
 " }}}
+
 " basic settings {{{
 set nocompatible
 if !exists('g:colors_name')
@@ -91,6 +92,7 @@ set foldopen+=jump
 set foldnestmax=10
 set foldlevelstart=10
 set diffopt+=vertical
+set nowrap
 set spell
 if has("re")
   set re=1
@@ -136,16 +138,21 @@ if has("autocmd")
 endif
 " }}}
 " }}} end basic settings
+
 " plugins {{{
 " nerdtree {{{
 "nnoremap <leader>d :NERDTreeToggle<CR>
-"nnoremap <leader>nr :NERDTreeFind<CR>
+"nnoremap <leader>nf :NERDTreeFind<CR>
+"nnoremap <leader>nr :NERDTreeCWD<CR>
 let g:NERDTreeWinSize = 24
 "let g:NERDTreeHijackNetrw = 0
 " }}}
 
 " netrw {{{
-"let g:netrw_liststyle=3
+"let g:netrw_liststyle = 3
+let g:netrw_preview = 1
+let g:netrw_winsize = 30
+"let g:netrw_banner  = 0
 " }}}
 
 " ctrlp {{{
@@ -211,7 +218,7 @@ let g:Gitv_DoNotMapCtrlKey = 1
 
 " tab {{{
 nmap [Tab] <Nop>
-nmap     t [Tab]
+nmap t [Tab]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
@@ -224,11 +231,12 @@ map <silent> [Tab]p :tabprevious<CR>
 " syntastic {{{
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_loc_list_height = 6
-let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_mode_map = {
   \ 'mode': 'passive',
   \ 'active_filetypes': ['ruby', 'javascript'],
