@@ -5,7 +5,7 @@ Plug 'christoomey/vim-run-interactive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
-"Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'altercation/vim-colors-solarized'
 Plug 'rking/ag.vim'
 Plug 'AndrewRadev/linediff.vim'
@@ -78,7 +78,7 @@ set tabstop=2
 set expandtab
 set listchars=eol:¬,tab:▸\ ,nbsp:.
 set linebreak
-"set colorcolumn=80
+set colorcolumn=100
 set complete+=k
 set ignorecase
 set smartcase
@@ -90,6 +90,10 @@ set foldopen+=jump
 set foldnestmax=10
 set foldlevelstart=10
 set diffopt+=vertical
+set spell
+if has("re")
+  set re=1
+endif
 
 " mapping {{{
 let mapleader = " "
@@ -135,13 +139,12 @@ endif
 " nerdtree {{{
 "nnoremap <leader>d :NERDTreeToggle<CR>
 "nnoremap <leader>nr :NERDTreeFind<CR>
-"let g:NERDTreeWinSize = 24
+let g:NERDTreeWinSize = 24
 "let g:NERDTreeHijackNetrw = 0
 " }}}
 
 " netrw {{{
-nnoremap <leader>d :e.<CR>
-let g:netrw_liststyle=3
+"let g:netrw_liststyle=3
 " }}}
 
 " ctrlp {{{
