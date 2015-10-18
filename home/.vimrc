@@ -41,6 +41,7 @@ Plug 'DavidEGx/ctrlp-smarttabs'
 Plug 'schickling/vim-bufonly'
 "Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 call plug#end()
 " }}}
 " basic settings {{{
