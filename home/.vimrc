@@ -4,6 +4,7 @@ Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-run-interactive'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
+Plug 'vim-ruby/vim-ruby'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'altercation/vim-colors-solarized'
@@ -42,6 +43,7 @@ Plug 'schickling/vim-bufonly'
 "Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'othree/yajs.vim'
 call plug#end()
 " }}}
 
@@ -78,7 +80,7 @@ set shiftround
 set softtabstop=2
 set tabstop=2
 set expandtab
-set listchars=eol:¬,tab:▸\ ,nbsp:.
+set listchars=eol:¬,tab:▸\ ,trail:.
 set linebreak
 set colorcolumn=100
 set complete+=k
@@ -134,8 +136,17 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.rss     setfiletype xml
   autocmd BufNewFile,BufRead *.thtml   setfiletype php
   autocmd BufNewFile,BufRead *.tpl     setfiletype smarty
+  autocmd BufNewFile,BufRead *.es6     setfiletype javascript
   autocmd BufNewFile,BufRead *_spec.rb compiler    rspec
-endif
+  autocmd InsertEnter * if !exists('w:last_fdm')
+              \| let w:last_fdm=&foldmethod
+              \| setlocal foldmethod=manual
+              \| endif
+  autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
+              \| let &l:foldmethod=w:last_fdm
+              \| unlet w:last_fdm
+              \| endif
+  endif
 " }}}
 " }}} end basic settings
 
@@ -209,7 +220,7 @@ cabbrev vcsvimdiff VCSVimDiff
 " gitv {{{
 cabbrev git Git
 cabbrev gitv Gitv
-let g:Gitv_OpenHorizontal = 0
+let g:Gitv_OpenHorizontal = 1
 let g:Gitv_WrapLines = 0
 let g:Gitv_TruncateCommitSubjects = 1
 let g:Gitv_OpenPreviewOnLaunch = 1
