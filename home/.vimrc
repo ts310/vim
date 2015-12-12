@@ -146,7 +146,7 @@ if has("autocmd")
               \| let &l:foldmethod=w:last_fdm
               \| unlet w:last_fdm
               \| endif
-  endif
+endif
 " }}}
 " }}} end basic settings
 
