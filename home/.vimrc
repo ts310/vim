@@ -44,6 +44,7 @@ Plug 'schickling/vim-bufonly'
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'othree/yajs.vim'
+Plug 'benmills/vimux'
 call plug#end()
 " }}}
 
