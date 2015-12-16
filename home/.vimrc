@@ -45,6 +45,7 @@ Plug 'fatih/vim-go'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'othree/yajs.vim'
 Plug 'benmills/vimux'
+Plug 'jgdavey/vim-turbux'
 call plug#end()
 " }}}
 
