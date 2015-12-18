@@ -42,7 +42,8 @@ Plug 'DavidEGx/ctrlp-smarttabs'
 Plug 'schickling/vim-bufonly'
 "Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'othree/yajs.vim'
 Plug 'benmills/vimux'
 Plug 'jgdavey/vim-turbux'
@@ -195,7 +196,12 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " ag {{{
 abbrev ag Ag
-noremap <Leader>ag :Ag -i<space>
+noremap <Leader>aa :Ag -i<space>
+" }}}
+
+" fzf {{{
+abbrev fzf FZF
+noremap <Leader>ff :FZF<CR>
 " }}}
 
 " fugitive {{{
@@ -267,10 +273,10 @@ let g:airline_right_sep = ''
 " }}}
 
 " rspec {{{
-nmap <Leader>c :call RunCurrentSpecFile()<CR>
-nmap <Leader>n :call RunNearestSpec()<CR>
-nmap <Leader>l :call RunLastSpec()<CR>
-nmap <Leader>a :call RunAllSpecs()<CR>
+" nmap <Leader>c :call RunCurrentSpecFile()<CR>
+" nmap <Leader>n :call RunNearestSpec()<CR>
+" nmap <Leader>l :call RunLastSpec()<CR>
+" nmap <Leader>a :call RunAllSpecs()<CR>
 " }}}
 
 " localvimrc {{{
