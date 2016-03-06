@@ -25,6 +25,8 @@ Plug 'tpope/vim-surround'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'mattn/emmet-vim'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
 Plug 'keith/swift.vim'
 Plug 'slim-template/vim-slim'
 Plug 'kchmck/vim-coffee-script'
@@ -47,14 +49,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'othree/yajs.vim'
 Plug 'benmills/vimux'
 Plug 'jgdavey/vim-turbux'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 call plug#end()
 " }}}
 
 " basic settings {{{
 set nocompatible
 if !exists('g:colors_name')
-  silent! colorscheme solarized
-  set background=dark
+  let base16colorspace=256
+  silent! colorscheme base16-tomorrow
+  set background=light
 endif
 set hidden
 set number
@@ -97,7 +101,7 @@ set foldopen+=jump
 set foldnestmax=10
 set foldlevelstart=10
 set diffopt+=vertical
-set nowrap
+set wrap
 set spell
 if has("re")
   set re=1
@@ -271,6 +275,7 @@ let g:user_emmet_leader_key = '<c-t>'
 " airline {{{
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline_theme = 'base16'
 " }}}
 
 " rspec {{{
