@@ -58,7 +58,7 @@ set nocompatible
 if !exists('g:colors_name')
   let base16colorspace=256
   silent! colorscheme base16-tomorrow
-  set background=light
+  set background=dark
 endif
 set hidden
 set number
