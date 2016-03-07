@@ -51,6 +51,8 @@ Plug 'jgdavey/vim-turbux'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'idanarye/vim-merginal'
 Plug 'altercation/vim-colors-solarized'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 " }}}
 
@@ -150,6 +152,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.thtml   setfiletype php
   autocmd BufNewFile,BufRead *.tpl     setfiletype smarty
   autocmd BufNewFile,BufRead *.es6     setfiletype javascript
+  autocmd BufNewFile,BufRead *.jsx     setfiletype javascript
   autocmd BufNewFile,BufRead *_spec.rb compiler    rspec
   autocmd InsertEnter * if !exists('w:last_fdm')
               \| let w:last_fdm=&foldmethod
@@ -214,7 +217,7 @@ noremap <Leader>aa :Ag -i<space>
 abbrev fzf FZF
 noremap <Leader>ff :FZF<CR>
 noremap <Leader>fb :Buffers<CR>
-" }}}
+"}}}
 
 " fugitive {{{
 command! Gd :Gdiff
@@ -270,7 +273,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_mode_map = {
   \ 'mode': 'passive',
-  \ 'active_filetypes': ['ruby', 'javascript'],
+  \ 'active_filetypes': ['ruby', 'javascript', 'scss'],
   \ 'passive_filetypes': []
   \ }
 " }}}
