@@ -7,7 +7,6 @@ Plug 'tpope/vim-endwise'
 Plug 'vim-ruby/vim-ruby'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'altercation/vim-colors-solarized'
 Plug 'rking/ag.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'gregsexton/gitv'
@@ -57,8 +56,8 @@ call plug#end()
 set nocompatible
 if !exists('g:colors_name')
   let base16colorspace=256
-  silent! colorscheme base16-tomorrow
-  set background=dark
+  silent! colorscheme base16-solarized
+  set background=light
 endif
 set hidden
 set number
@@ -259,7 +258,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_loc_list_height = 6
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_mode_map = {
   \ 'mode': 'passive',
