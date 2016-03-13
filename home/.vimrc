@@ -54,10 +54,14 @@ call plug#end()
 
 " basic settings {{{
 set nocompatible
-if !exists('g:colors_name')
-  let base16colorspace=256
-  silent! colorscheme base16-solarized
-  set background=light
+let base16colorspace=256
+set t_Co=256
+set background=light
+colorscheme base16-default
+set ttyfast
+if !has('nvim')
+  set mouse=a
+  set ttymouse=xterm2
 endif
 set hidden
 set number
@@ -70,7 +74,9 @@ set visualbell t_vb=
 set autoread
 set encoding=utf-8
 set virtualedit+=block
-set clipboard+=unnamedplus,unnamed,autoselect
+if !has('nvim')
+  set clipboard+=unnamedplus,unnamed,autoselect
+endif
 set tags+=.tags
 set laststatus=2
 set cmdheight=2
@@ -99,8 +105,9 @@ set foldmethod=marker
 set foldopen+=jump
 set foldnestmax=10
 set foldlevelstart=10
+set foldenable
 set diffopt+=vertical
-set wrap
+set nowrap
 set spell
 if has("re")
   set re=1
