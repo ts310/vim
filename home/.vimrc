@@ -165,11 +165,12 @@ endif
 
 " plugins {{{
 " nerdtree {{{
-"nnoremap <leader>d :NERDTreeToggle<CR>
-"nnoremap <leader>nf :NERDTreeFind<CR>
-"nnoremap <leader>nr :NERDTreeCWD<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader>nr :NERDTreeCWD<CR>
 let g:NERDTreeWinSize = 24
-"let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeShowHidden = 1
 " }}}
 
 " netrw {{{
