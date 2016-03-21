@@ -25,7 +25,7 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'mattn/emmet-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/base16-vim'
 Plug 'keith/swift.vim'
 Plug 'slim-template/vim-slim'
 Plug 'kchmck/vim-coffee-script'
@@ -49,15 +49,18 @@ Plug 'othree/yajs.vim'
 Plug 'benmills/vimux'
 Plug 'jgdavey/vim-turbux'
 Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'idanarye/vim-merginal'
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 " }}}
 
 " basic settings {{{
 set nocompatible
-let base16colorspace=256
+"let base16colorspace=256
+let g:solarized_termcolors=256
 set t_Co=256
 set background=light
-colorscheme base16-default
+colorscheme solarized
 set ttyfast
 if !has('nvim')
   set mouse=a
@@ -107,7 +110,7 @@ set foldnestmax=10
 set foldlevelstart=10
 set foldenable
 set diffopt+=vertical
-set nowrap
+set wrap
 set spell
 if has("re")
   set re=1
@@ -142,7 +145,7 @@ if has("autocmd")
   autocmd FileType vim        setlocal ts=2 sts=2 sw=2 et
   autocmd FileType html       setlocal ts=2 sts=2 sw=2 et
   autocmd FileType css        setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 et   foldmethod=indent
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
   autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
   autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
   autocmd FileType sql        setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
