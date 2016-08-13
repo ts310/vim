@@ -107,9 +107,7 @@ set foldenable
 set diffopt+=vertical
 set wrap
 set spell
-if has("re")
-  set re=1
-endif
+set re=1
 
 " mapping {{{
 let mapleader = " "
