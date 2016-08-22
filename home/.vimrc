@@ -49,6 +49,8 @@ Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 call plug#end()
 " }}}
 
@@ -140,7 +142,7 @@ if has("autocmd")
   autocmd FileType css        setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
   autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
-  autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
+  autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
   autocmd FileType sql        setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
   autocmd BufNewFile,BufRead *.rss     setfiletype xml
   autocmd BufNewFile,BufRead *.thtml   setfiletype php
@@ -295,6 +297,12 @@ let g:localvimrc_ask = 0
 
 " require an interactive shell {{{
 nnoremap <Leader>ri :RunInInteractiveShell<space>
+" }}}
+
+" easytags {{{
+let g:easytags_async = 1
+let g:easytags_auto_update = 0
+let g:easytags_auto_highlight = 0
 " }}}
 " }}} end plugins
 
