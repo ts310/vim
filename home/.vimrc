@@ -109,7 +109,6 @@ set foldenable
 set diffopt+=vertical
 set wrap
 set spell
-set re=1
 
 " mapping {{{
 let mapleader = " "
@@ -134,15 +133,15 @@ if has("autocmd")
   " Syntax
   autocmd FileType make       setlocal ts=8 sts=8 sw=8 noet
   autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 et
-  autocmd FileType php        setlocal ts=4 sts=4 sw=4 noet foldmethod=indent
+  autocmd FileType php        setlocal ts=4 sts=4 sw=4 noet foldmethod=syntax
   autocmd FileType smarty     setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
   autocmd FileType java       setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
   autocmd FileType vim        setlocal ts=2 sts=2 sw=2 et
   autocmd FileType html       setlocal ts=2 sts=2 sw=2 et
   autocmd FileType css        setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
-  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
   autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
-  autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
+  autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
   autocmd FileType sql        setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
   autocmd BufNewFile,BufRead *.rss     setfiletype xml
   autocmd BufNewFile,BufRead *.thtml   setfiletype php
@@ -306,6 +305,9 @@ let g:easytags_auto_highlight = 0
 " }}}
 " }}} end plugins
 
+" easytags {{{
+let g:easytags_async = 1
+" }}}
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
