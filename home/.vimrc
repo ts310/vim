@@ -305,9 +305,6 @@ let g:easytags_auto_highlight = 0
 " }}}
 " }}} end plugins
 
-" easytags {{{
-let g:easytags_async = 1
-" }}}
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
