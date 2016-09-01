@@ -109,6 +109,7 @@ set foldenable
 set diffopt+=vertical
 set wrap
 set spell
+set cursorline
 
 " mapping {{{
 let mapleader = " "
