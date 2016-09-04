@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'rking/ag.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'gregsexton/gitv'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'd11wtq/ctrlp_bdelete.vim'
 Plug 'scrooloose/syntastic'
