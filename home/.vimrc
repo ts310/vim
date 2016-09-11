@@ -54,6 +54,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-rsi'
 Plug 'tokorom/syntastic-swiftlint.vim'
 Plug 'apple/swift', { 'rtp': 'utils/vim' }
+Plug 'vim-scripts/gitignore'
+Plug 'tpope/vim-sleuth'
 call plug#end()
 " }}}
 
@@ -199,8 +201,12 @@ let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_follow_symlinks = 1
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'Ag %s -l --nocolor --hidden -g ""'
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
 endif
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
