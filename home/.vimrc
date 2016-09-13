@@ -51,6 +51,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
+Plug 'terryma/vim-expand-region'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'tpope/vim-rsi'
 call plug#end()
 " }}}
 
@@ -304,6 +307,11 @@ let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 " }}}
 " }}} end plugins
+
+" expand-region {{{
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+" }}}
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
