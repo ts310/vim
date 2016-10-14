@@ -25,7 +25,6 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'mattn/emmet-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'keith/swift.vim'
 Plug 'slim-template/vim-slim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
@@ -52,8 +51,9 @@ Plug 'mxw/vim-jsx'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'terryma/vim-expand-region'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'tpope/vim-rsi'
+Plug 'tokorom/syntastic-swiftlint.vim'
+Plug 'apple/swift', { 'rtp': 'utils/vim' }
 call plug#end()
 " }}}
 
@@ -112,6 +112,8 @@ set foldenable
 set diffopt+=vertical
 set wrap
 set spell
+set modeline
+set modelines=5
 
 " mapping {{{
 let mapleader = " "
@@ -269,9 +271,10 @@ let g:syntastic_loc_list_height = 6
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_scss_checkers = ['scss_lint']
+let g:syntastic_swift_checkers = ['swiftlint']
 let g:syntastic_mode_map = {
   \ 'mode': 'passive',
-  \ 'active_filetypes': ['ruby', 'javascript', 'scss'],
+  \ 'active_filetypes': ['ruby', 'javascript', 'scss', 'swift'],
   \ 'passive_filetypes': []
   \ }
 " }}}
