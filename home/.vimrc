@@ -322,6 +322,12 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
+" Find command cf. https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2#.1lk88kj01
+" {{{
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+set grepprg=rg\ --vimgrep
+" }}}
+
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
