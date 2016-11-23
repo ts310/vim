@@ -55,7 +55,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tokorom/syntastic-swiftlint.vim'
 Plug 'apple/swift', { 'rtp': 'utils/vim' }
 Plug 'vim-scripts/gitignore'
-Plug 'tpope/vim-sleuth'
+"Plug 'tpope/vim-sleuth'
 call plug#end()
 " }}}
 
