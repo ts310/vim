@@ -56,6 +56,7 @@ Plug 'tokorom/syntastic-swiftlint.vim'
 Plug 'apple/swift', { 'rtp': 'utils/vim' }
 Plug 'vim-scripts/gitignore'
 "Plug 'tpope/vim-sleuth'
+Plug 'lambdatoast/elm.vim'
 call plug#end()
 " }}}
 
@@ -150,6 +151,7 @@ if has("autocmd")
   autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
   autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
   autocmd FileType sql        setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
+  autocmd FileType swift      setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
   autocmd BufNewFile,BufRead *.rss     setfiletype xml
   autocmd BufNewFile,BufRead *.thtml   setfiletype php
   autocmd BufNewFile,BufRead *.tpl     setfiletype smarty
@@ -283,6 +285,7 @@ let g:syntastic_mode_map = {
   \ 'active_filetypes': ['ruby', 'javascript', 'scss', 'swift'],
   \ 'passive_filetypes': []
   \ }
+let g:syntastic_ignore_files = ['schema\.rb']
 " }}}
 
 " emmet {{{
