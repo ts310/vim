@@ -157,7 +157,7 @@ if has("autocmd")
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
   autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
   autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
-  autocmd FileType sql        setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
+  autocmd FileType sql        setlocal ts=4 sts=4 sw=4 noet foldmethod=indent
   autocmd FileType swift      setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
   autocmd BufNewFile,BufRead *.rss     setfiletype xml
   autocmd BufNewFile,BufRead *.thtml   setfiletype php
@@ -219,7 +219,7 @@ let g:solarized_termcolors = 256
 let g:solarized_term_italics = 1
 set background=light
 set termguicolors
-colorscheme solarized8_light_flat
+colorscheme solarized8_light
 " }}}
 
 " easytags {{{
