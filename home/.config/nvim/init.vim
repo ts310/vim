@@ -5,9 +5,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" plug-in: settings
+Plug 'tpope/vim-sensible'
+Plug 'embear/vim-localvimrc'
+
 " plug-in: colorscheme
 Plug 'lifepillar/vim-solarized8'
-Plug 'albertorestifo/github.vim'
+
+" plug-in: command
+Plug 'tpope/vim-rsi'
 
 " plug-in: async
 Plug 'neomake/neomake'
@@ -30,6 +36,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tyru/open-browser.vim'
 
 " plug-in: fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -50,18 +57,16 @@ Plug 'scrooloose/syntastic'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'tokorom/syntastic-swiftlint.vim'
 
-" plug-in: misc
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-rsi'
-Plug 'tyru/open-browser.vim'
-Plug 'embear/vim-localvimrc'
+" plug-in: tmux
 Plug 'benmills/vimux'
-Plug 'jgdavey/vim-turbux'
+"
+" plug-in: misc
 Plug 'xolox/vim-misc'
 
 " plug-in: buffers/tabs
 Plug 'mkitt/tabline.vim'
 Plug 'schickling/vim-bufonly'
+Plug 'szw/vim-maximizer'
 
 " plug-in: tags
 Plug 'xolox/vim-easytags'
@@ -86,12 +91,15 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs.vim'
 
+" plug-in: testing
+Plug 'jgdavey/vim-turbux'
+
 call plug#end()
 " }}}
 
 " basic settings {{{
 set nocompatible
-set cursorline
+" set cursorline
 set ttyfast
 set hidden
 set number
@@ -295,21 +303,31 @@ map <silent> [Tab]p :tabprevious<CR>
 " }}}
 
 " syntastic {{{
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_loc_list_height = 6
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_swift_checkers = ['swiftlint']
-let g:syntastic_mode_map = {
-  \ 'mode': 'passive',
-  \ 'active_filetypes': ['ruby', 'javascript', 'scss', 'swift'],
-  \ 'passive_filetypes': []
-  \ }
-let g:syntastic_ignore_files = ['schema\.rb']
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 1
+" let g:syntastic_loc_list_height = 6
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_scss_checkers = ['scss_lint']
+" let g:syntastic_swift_checkers = ['swiftlint']
+" let g:syntastic_mode_map = {
+"   \ 'mode': 'passive',
+"   \ 'active_filetypes': ['ruby', 'javascript', 'scss', 'swift'],
+"   \ 'passive_filetypes': []
+"   \ }
+" let g:syntastic_ignore_files = ['schema\.rb']
+" }}}
+
+" neomake {{{
+autocmd! BufRead,BufWritePost * Neomake
+let g:neomake_ruby_makers = ['mri', 'rubocop']
+let g:neomake_javascript_makers = ['eslint']
+let g:neomake_scss_makers = ['scss_lint']
+let g:neomake_swift_makers = ['swiftlint']
+let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
+let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
 " }}}
 
 " emmet {{{
@@ -347,4 +365,8 @@ let g:easytags_auto_highlight = 0
 " expand-region {{{
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+" }}}
+
+" tagbar {{{
+let g:tagbar_sort = 0
 " }}}
