@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " plug-in: colorscheme
 Plug 'lifepillar/vim-solarized8'
+Plug 'albertorestifo/github.vim'
 
 " plug-in: async
 Plug 'neomake/neomake'
@@ -137,6 +138,8 @@ set diffopt+=vertical
 set wrap
 set modelines=5
 " optimize screen flickering
+set background=light
+set termguicolors
 hi Normal ctermbg=NONE
 set sh=zsh
 " }}}
@@ -217,9 +220,7 @@ set grepprg=rg\ --vimgrep
 " solarized {{{
 let g:solarized_termcolors = 256
 let g:solarized_term_italics = 1
-set background=light
-set termguicolors
-colorscheme solarized8_light
+colorscheme solarized8_light_high
 " }}}
 
 " easytags {{{
