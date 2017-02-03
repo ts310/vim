@@ -56,6 +56,7 @@ Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'tokorom/syntastic-swiftlint.vim'
+Plug 'benjie/neomake-local-eslint.vim'
 
 " plug-in: tmux
 Plug 'benmills/vimux'
@@ -80,7 +81,6 @@ Plug 'dhruvasagar/vim-prosession'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
-Plug 'thoughtbot/vim-rspec'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'lambdatoast/elm.vim'
@@ -90,9 +90,6 @@ Plug 'fatih/vim-go'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs.vim'
-
-" plug-in: testing
-Plug 'jgdavey/vim-turbux'
 
 call plug#end()
 " }}}
@@ -130,7 +127,7 @@ set tabstop=2
 set expandtab
 set listchars=eol:¬,tab:▸\ ,trail:.
 set linebreak
-set colorcolumn=100
+" set colorcolumn=100
 set complete+=k
 set ignorecase
 set smartcase
@@ -217,6 +214,8 @@ let g:NERDTreeShowHidden = 1
 abbrev fzf FZF
 noremap <Leader>ff :FZF<CR>
 noremap <Leader>fb :Buffers<CR>
+noremap <Leader>fw :Windows<CR>
+noremap <Leader>fc :Commits<CR>
 "}}}
 
 " 'Find command' {{{
@@ -369,4 +368,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " tagbar {{{
 let g:tagbar_sort = 0
+" }}}
+
+" vimux; {{{
+let VimuxUseNearest = 1
+map <Leader>rs :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
 " }}}
