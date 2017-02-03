@@ -339,13 +339,6 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'base16'
 " }}}
 
-" rspec {{{
-" nmap <Leader>c :call RunCurrentSpecFile()<CR>
-" nmap <Leader>n :call RunNearestSpec()<CR>
-" nmap <Leader>l :call RunLastSpec()<CR>
-" nmap <Leader>a :call RunAllSpecs()<CR>
-" }}}
-
 " localvimrc {{{
 let g:localvimrc_ask = 0
 " }}}
@@ -373,4 +366,5 @@ let g:tagbar_sort = 0
 " vimux; {{{
 let VimuxUseNearest = 1
 map <Leader>rs :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
+map <Leader>rl :call VimuxRunLastCommand()<CR>
 " }}}
