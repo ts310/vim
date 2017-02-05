@@ -96,7 +96,7 @@ call plug#end()
 
 " basic settings {{{
 set nocompatible
-" set cursorline
+set cursorline
 set ttyfast
 set hidden
 set number
@@ -127,7 +127,6 @@ set tabstop=2
 set expandtab
 set listchars=eol:¬,tab:▸\ ,trail:.
 set linebreak
-" set colorcolumn=100
 set complete+=k
 set ignorecase
 set smartcase
@@ -137,13 +136,14 @@ set viminfo='100,f1
 set foldmethod=marker
 set foldopen+=jump
 set foldnestmax=10
-set foldlevelstart=10
+set foldlevelstart=1
 set foldenable
 set diffopt+=vertical
 set wrap
-set modelines=5
-" optimize screen flickering
+set modelines=3
 set background=light
+let g:solarized_termcolors=256
+colorscheme solarized8_light
 set termguicolors
 hi Normal ctermbg=NONE
 set sh=zsh
@@ -216,18 +216,13 @@ noremap <Leader>ff :FZF<CR>
 noremap <Leader>fb :Buffers<CR>
 noremap <Leader>fw :Windows<CR>
 noremap <Leader>fc :Commits<CR>
+noremap <Leader>ft :BTags<CR>
 "}}}
 
 " 'Find command' {{{
 " cf. https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2#.1lk88kj01
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 set grepprg=rg\ --vimgrep
-" }}}
-
-" solarized {{{
-let g:solarized_termcolors = 256
-let g:solarized_term_italics = 1
-colorscheme solarized8_light_high
 " }}}
 
 " easytags {{{
@@ -343,17 +338,6 @@ let g:airline_theme = 'base16'
 let g:localvimrc_ask = 0
 " }}}
 
-" require an interactive shell {{{
-nnoremap <Leader>ri :RunInInteractiveShell<space>
-" }}}
-
-" easytags {{{
-let g:easytags_async = 1
-let g:easytags_auto_update = 0
-let g:easytags_auto_highlight = 0
-" }}}
-" }}} end plugins
-
 " expand-region {{{
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -363,8 +347,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:tagbar_sort = 0
 " }}}
 
-" vimux; {{{
+" vimux {{{
 let VimuxUseNearest = 1
 map <Leader>rs :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunLastCommand()<CR>
+map <Leader>ri :call VimuxPromptCommand()<CR>
 " }}}
