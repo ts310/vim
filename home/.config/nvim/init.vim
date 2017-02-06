@@ -69,6 +69,9 @@ Plug 'mkitt/tabline.vim'
 Plug 'schickling/vim-bufonly'
 Plug 'szw/vim-maximizer'
 
+" plug-in: quickfix
+Plug 'tyru/qfhist.vim'
+
 " plug-in: tags
 Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
@@ -136,7 +139,7 @@ set viminfo='100,f1
 set foldmethod=marker
 set foldopen+=jump
 set foldnestmax=10
-set foldlevelstart=1
+set foldlevelstart=3
 set foldenable
 set diffopt+=vertical
 set wrap
