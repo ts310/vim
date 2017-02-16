@@ -245,6 +245,8 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
+noremap <C-p>      :GFiles<CR>
+noremap <Leader>p  :GFiles<CR>
 noremap <Leader>ff :FZF<CR>
 noremap <Leader>fb :Buffers<CR>
 noremap <Leader>fw :Windows<CR>
@@ -266,9 +268,9 @@ let g:easytags_auto_highlight = 0
 " }}}
 
 " ctrlp {{{
-let g:ctrlp_map = '<C-p>'
+" let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlP'
-map <Leader>p :CtrlP<CR>
+" map <Leader>p :CtrlP<CR>
 let g:ctrlp_extensions = ['funky', 'smarttabs']
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:40'
