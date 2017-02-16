@@ -149,6 +149,7 @@ colorscheme solarized8_light
 set termguicolors
 hi Normal ctermbg=NONE
 set sh=zsh
+set notimeout
 " }}}
 
 " auto command {{{
