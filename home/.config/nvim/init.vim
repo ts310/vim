@@ -1,10 +1,6 @@
 " plug-in loading {{{
 call plug#begin('~/.local/share/nvim/plugged')
 
-" plug-in: ui
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " plug-in: settings
 Plug 'tpope/vim-sensible'
 Plug 'embear/vim-localvimrc'
@@ -41,20 +37,7 @@ Plug 'tyru/open-browser.vim'
 " plug-in: fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
-" plug-in: ctrlp
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'd11wtq/ctrlp_bdelete.vim'
-Plug 'DavidEGx/ctrlp-smarttabs'
-Plug 'ivalkeen/vim-ctrlp-tjump'
-
-" plug-in: grep
-Plug 'rking/ag.vim'
-
 " plug-in: syntax check
-Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
-Plug 'tokorom/syntastic-swiftlint.vim'
 Plug 'benjie/neomake-local-eslint.vim'
 
 " plug-in: tmux
@@ -72,8 +55,7 @@ Plug 'szw/vim-maximizer'
 Plug 'tyru/qfhist.vim'
 
 " plug-in: tags
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': ['Tagbar', 'TagbarToggle'] }
 
 " plug-in: session
 Plug 'tpope/vim-obsession'
@@ -237,7 +219,6 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 function! s:fzf_statusline()
-  " Override statusline as you like
   highlight fzf1 ctermfg=161 ctermbg=251
   highlight fzf2 ctermfg=23 ctermbg=251
   highlight fzf3 ctermfg=237 ctermbg=251
@@ -262,45 +243,6 @@ command! -bang -nargs=* Find
 set grepprg=rg\ --vimgrep
 " }}}
 
-" easytags {{{
-let g:easytags_async = 1
-let g:easytags_auto_update = 0
-let g:easytags_auto_highlight = 0
-" }}}
-
-" ctrlp {{{
-let g:ctrlp_map = ''
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_extensions = ['funky', 'smarttabs']
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:40'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth = 0
-let g:ctrlp_use_migemo = 1
-let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_follow_symlinks = 1
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-    \ }
-endif
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-" }}}
-
-" ag {{{
-abbrev ag Ag
-noremap <Leader>aa :Ag -i<space>
-" }}}
-
 " fugitive {{{
 command! Gd :Gdiff
 command! Gc :Gcommit
@@ -311,8 +253,6 @@ au BufReadPost fugitive://* set bufhidden=delete
 " }}}
 
 " gitv {{{
-" cabbrev git Git
-" cabbrev gitv Gitv
 let g:Gitv_OpenHorizontal = 1
 let g:Gitv_WrapLines = 0
 let g:Gitv_TruncateCommitSubjects = 1
@@ -332,42 +272,19 @@ map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]p :tabprevious<CR>
 " }}}
 
-" syntastic {{{
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 1
-" let g:syntastic_loc_list_height = 6
-" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_scss_checkers = ['scss_lint']
-" let g:syntastic_swift_checkers = ['swiftlint']
-" let g:syntastic_mode_map = {
-"   \ 'mode': 'passive',
-"   \ 'active_filetypes': ['ruby', 'javascript', 'scss', 'swift'],
-"   \ 'passive_filetypes': []
-"   \ }
-" let g:syntastic_ignore_files = ['schema\.rb']
-" }}}
-
 " neomake {{{
 autocmd! BufRead,BufWritePost * Neomake
-let g:neomake_ruby_makers = ['mri', 'rubocop']
-let g:neomake_javascript_makers = ['eslint']
-let g:neomake_scss_makers = ['scss_lint']
-let g:neomake_swift_makers = ['swiftlint']
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neomake_scss_enabled_makers = ['scss_lint']
+let g:neomake_swift_enabled_makers = ['swiftlint']
 let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
 let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
 " }}}
 
 " emmet {{{
 let g:user_emmet_leader_key = '<c-t>'
-" }}}
-
-" airline {{{
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_theme = 'base16'
 " }}}
 
 " localvimrc {{{
