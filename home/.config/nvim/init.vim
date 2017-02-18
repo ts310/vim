@@ -42,9 +42,6 @@ Plug 'benjie/neomake-local-eslint.vim'
 
 " plug-in: tmux
 Plug 'benmills/vimux'
-"
-" plug-in: misc
-Plug 'xolox/vim-misc'
 
 " plug-in: buffers/tabs
 Plug 'mkitt/tabline.vim'
@@ -122,6 +119,7 @@ set foldopen+=jump
 set foldnestmax=10
 set foldlevelstart=3
 set foldenable
+set nofoldenable
 set diffopt+=vertical
 set wrap
 set modelines=3
@@ -150,7 +148,7 @@ if has("autocmd")
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
   autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
   autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
-  autocmd FileType sql        setlocal ts=4 sts=4 sw=4 noet foldmethod=indent
+  autocmd FileType sql        setlocal ts=4 sts=4 sw=4 et   foldmethod=indent
   autocmd FileType swift      setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
   autocmd BufNewFile,BufRead *.rss     setfiletype xml
   autocmd BufNewFile,BufRead *.thtml   setfiletype php
