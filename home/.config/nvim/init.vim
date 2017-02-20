@@ -13,7 +13,7 @@ Plug 'tpope/vim-rsi'
 
 " plug-in: async
 Plug 'neomake/neomake'
-Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch', { 'on': 'Dispatch' }
 
 " plug-in: navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -119,7 +119,6 @@ set foldmethod=marker
 set foldopen+=jump
 set foldnestmax=10
 set foldlevelstart=3
-set foldenable
 set nofoldenable
 set diffopt+=vertical
 set wrap
@@ -128,9 +127,8 @@ set background=light
 let g:solarized_termcolors=256
 colorscheme solarized8_light
 set termguicolors
-hi Normal ctermbg=NONE
-set sh=zsh
 set notimeout
+set sh=/usr/local/bin/zsh
 " }}}
 
 " auto command {{{
@@ -147,6 +145,7 @@ if has("autocmd")
   autocmd FileType html       setlocal ts=2 sts=2 sw=2 et
   autocmd FileType css        setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
+  autocmd FileType jsx        setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
   autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
   autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
   autocmd FileType sql        setlocal ts=4 sts=4 sw=4 et   foldmethod=indent
@@ -157,14 +156,6 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.es6     setfiletype javascript
   autocmd BufNewFile,BufRead *.jsx     setfiletype javascript
   autocmd BufNewFile,BufRead *_spec.rb compiler    rspec
-  autocmd InsertEnter * if !exists('w:last_fdm')
-              \| let w:last_fdm=&foldmethod
-              \| setlocal foldmethod=manual
-              \| endif
-  autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
-              \| let &l:foldmethod=w:last_fdm
-              \| unlet w:last_fdm
-              \| endif
 endif
 " }}}
 
@@ -228,11 +219,14 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 noremap <C-p>      :GFiles<CR>
 noremap <Leader>p  :GFiles<CR>
-noremap <Leader>ff :FZF<CR>
+noremap <Leader>ff :GFiles<CR>
+noremap <Leader>fd :FZF<CR>
 noremap <Leader>fb :Buffers<CR>
 noremap <Leader>fw :Windows<CR>
 noremap <Leader>fc :Commits<CR>
 noremap <Leader>ft :BTags<CR>
+
+nnoremap <c-]> :call fzf#vim#tags(expand('<cword>'))<cr>
 "}}}
 
 " 'Find command' {{{
@@ -252,7 +246,7 @@ au BufReadPost fugitive://* set bufhidden=delete
 " }}}
 
 " gitv {{{
-let g:Gitv_OpenHorizontal = 1
+let g:Gitv_OpenHorizontal = 0
 let g:Gitv_WrapLines = 0
 let g:Gitv_TruncateCommitSubjects = 1
 let g:Gitv_OpenPreviewOnLaunch = 1
@@ -301,7 +295,26 @@ let g:tagbar_sort = 0
 
 " vimux {{{
 let VimuxUseNearest = 1
-map <Leader>rs :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
+map <Leader>rt :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunLastCommand()<CR>
 map <Leader>ri :call VimuxPromptCommand()<CR>
+" }}}
+
+" terminal color {{{
+let g:terminal_color_0  = '#2e3436'
+let g:terminal_color_1  = '#cc0000'
+let g:terminal_color_2  = '#4e9a06'
+let g:terminal_color_3  = '#c4a000'
+let g:terminal_color_4  = '#3465a4'
+let g:terminal_color_5  = '#75507b'
+let g:terminal_color_6  = '#0b939b'
+let g:terminal_color_7  = '#d3d7cf'
+let g:terminal_color_8  = '#555753'
+let g:terminal_color_9  = '#ef2929'
+let g:terminal_color_10 = '#8ae234'
+let g:terminal_color_11 = '#fce94f'
+let g:terminal_color_12 = '#729fcf'
+let g:terminal_color_13 = '#ad7fa8'
+let g:terminal_color_14 = '#00f5e9'
+let g:terminal_color_15 = '#eeeeec'
 " }}}
