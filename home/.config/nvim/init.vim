@@ -78,6 +78,7 @@ call plug#end()
 " basic settings {{{
 set nocompatible
 set cursorline
+set colorcolumn=100
 set ttyfast
 set hidden
 set number
