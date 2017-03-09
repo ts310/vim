@@ -5,6 +5,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'embear/vim-localvimrc'
 
+" plug-in: status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " plug-in: colorscheme
 Plug 'lifepillar/vim-solarized8'
 
@@ -295,6 +299,7 @@ let g:tagbar_sort = 0
 
 " vimux {{{
 let VimuxUseNearest = 1
+map <Leader>re :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
 map <Leader>rt :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunLastCommand()<CR>
 map <Leader>ri :call VimuxPromptCommand()<CR>
@@ -317,4 +322,10 @@ let g:terminal_color_12 = '#729fcf'
 let g:terminal_color_13 = '#ad7fa8'
 let g:terminal_color_14 = '#00f5e9'
 let g:terminal_color_15 = '#eeeeec'
+" }}}
+
+" airline {{{
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#tagbar#enabled = 0
 " }}}
