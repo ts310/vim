@@ -1,13 +1,13 @@
 " plug-in loading {{{
 call plug#begin('~/.local/share/nvim/plugged')
 
+" plug-in: airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " plug-in: settings
 Plug 'tpope/vim-sensible'
 Plug 'embear/vim-localvimrc'
-
-" plug-in: status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " plug-in: colorscheme
 Plug 'lifepillar/vim-solarized8'
@@ -127,40 +127,51 @@ set nofoldenable
 set diffopt+=vertical
 set wrap
 set modelines=3
+set sh=/usr/local/bin/zsh
+set notimeout
+" }}}
+
+" solarized {{{
 set background=light
 let g:solarized_termcolors=256
 colorscheme solarized8_light
 set termguicolors
-set notimeout
-set sh=/usr/local/bin/zsh
+hi Normal ctermbg=NONE
 " }}}
 
 " auto command {{{
-if has("autocmd")
-  " shift the cursor to the postition of last time the file was open
-  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-  " Syntax
-  autocmd FileType make       setlocal ts=8 sts=8 sw=8 noet
-  autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 et
-  autocmd FileType php        setlocal ts=4 sts=4 sw=4 noet foldmethod=syntax
-  autocmd FileType smarty     setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
-  autocmd FileType java       setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
-  autocmd FileType vim        setlocal ts=2 sts=2 sw=2 et
-  autocmd FileType html       setlocal ts=2 sts=2 sw=2 et
-  autocmd FileType css        setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
-  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
-  autocmd FileType jsx        setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
-  autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
-  autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
-  autocmd FileType sql        setlocal ts=4 sts=4 sw=4 et   foldmethod=indent
-  autocmd FileType swift      setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
-  autocmd BufNewFile,BufRead *.rss     setfiletype xml
-  autocmd BufNewFile,BufRead *.thtml   setfiletype php
-  autocmd BufNewFile,BufRead *.tpl     setfiletype smarty
-  autocmd BufNewFile,BufRead *.es6     setfiletype javascript
-  autocmd BufNewFile,BufRead *.jsx     setfiletype javascript
-  autocmd BufNewFile,BufRead *_spec.rb compiler    rspec
-endif
+" shift the cursor to the postition of last time the file was open
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+" Syntax
+autocmd FileType make       setlocal ts=8 sts=8 sw=8 noet
+autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 et
+autocmd FileType php        setlocal ts=4 sts=4 sw=4 noet foldmethod=syntax
+autocmd FileType smarty     setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
+autocmd FileType java       setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
+autocmd FileType vim        setlocal ts=2 sts=2 sw=2 et
+autocmd FileType html       setlocal ts=2 sts=2 sw=2 et
+autocmd FileType css        setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
+autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
+autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
+autocmd FileType sql        setlocal ts=4 sts=4 sw=4 et   foldmethod=indent
+autocmd FileType swift      setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
+autocmd BufNewFile,BufRead *.rss     setfiletype xml
+autocmd BufNewFile,BufRead *.thtml   setfiletype php
+autocmd BufNewFile,BufRead *.tpl     setfiletype smarty
+autocmd BufNewFile,BufRead *.es6     setfiletype javascript
+autocmd BufNewFile,BufRead *.jsx     setfiletype javascript
+autocmd BufNewFile,BufRead *_spec.rb compiler    rspec
+
+autocmd InsertEnter * if !exists('w:last_fdm')
+            \| let w:last_fdm=&foldmethod
+            \| setlocal foldmethod=manual
+            \| endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
+            \| let &l:foldmethod=w:last_fdm
+            \| unlet w:last_fdm
+            \| endif
 " }}}
 
 " mapping {{{
