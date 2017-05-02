@@ -129,6 +129,7 @@ set wrap
 set modelines=3
 set sh=/usr/local/bin/zsh
 set notimeout
+set ambiwidth=double
 " }}}
 
 " solarized {{{
