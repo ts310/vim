@@ -37,6 +37,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tyru/open-browser.vim'
+Plug 'bronson/vim-trailing-whitespace'
 
 " plug-in: fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -96,7 +97,7 @@ set visualbell t_vb=
 set autoread
 set encoding=utf-8
 set virtualedit+=block
-set tags+=.tags
+set tags+=.tags,.git/tags,.svn/tags
 set laststatus=2
 set cmdheight=2
 set display=lastline
@@ -129,7 +130,7 @@ set wrap
 set modelines=3
 set sh=/usr/local/bin/zsh
 set notimeout
-set ambiwidth=double
+"set ambiwidth=double
 " }}}
 
 " solarized {{{
@@ -173,6 +174,8 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
             \| let &l:foldmethod=w:last_fdm
             \| unlet w:last_fdm
             \| endif
+autocmd QuickfixCmdPost vimgrep copen
+autocmd QuickfixCmdPost grep copen
 " }}}
 
 " mapping {{{
@@ -188,8 +191,12 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
 " bind K to grep word under cursor
-nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :grep "\b<C-R><C-W>\b"<CR>:cw<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
+nnoremap <Leader>q] :cn<CR>
+nnoremap <Leader>q[ :cp<CR>
+nnoremap <Leader>g :cp<CR>
+nnoremap <Leader>q[ :cp<CR>
 " }}}
 
 " nerdtree {{{
@@ -249,7 +256,7 @@ nnoremap <c-]> :call fzf#vim#tags(expand('<cword>'))<cr>
 " cf. https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2#.1lk88kj01
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 command! -bang -nargs=* Find
-set grepprg=rg\ --vimgrep
+set grepprg=git\ grep\ -I\ --line-number
 " }}}
 
 " fugitive {{{
@@ -313,6 +320,7 @@ let g:tagbar_sort = 0
 let VimuxUseNearest = 1
 map <Leader>re :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
 map <Leader>rt :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
+map <Leader>ro :call VimuxRunCommand('clear; bundle exec rubocop ' . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunLastCommand()<CR>
 map <Leader>ri :call VimuxPromptCommand()<CR>
 " }}}
