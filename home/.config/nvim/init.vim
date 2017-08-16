@@ -213,9 +213,7 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-" let g:fzf_layout = { 'down': '~40%' }
-" let g:fzf_layout = { 'window': 'enew' }
-" let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -254,7 +252,7 @@ nnoremap <c-]> :call fzf#vim#tags(expand('<cword>'))<cr>
 
 " 'Find command' {{{
 " cf. https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2#.1lk88kj01
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-messages --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 command! -bang -nargs=* Find
 set grepprg=git\ grep\ -I\ --line-number
 " }}}
@@ -297,6 +295,8 @@ let g:neomake_scss_enabled_makers = ['scss_lint']
 let g:neomake_swift_enabled_makers = ['swiftlint']
 let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
 let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
+let g:neomake_info_sign = {'text': '>>',  'texthl': 'Info'}
+let g:neomake_message_sign = {'text': '>>',  'texthl': 'Message'}
 " }}}
 
 " emmet {{{
