@@ -136,7 +136,7 @@ set notimeout
 " solarized {{{
 set background=light
 let g:solarized_termcolors=256
-colorscheme solarized8_light
+colorscheme solarized8_light_high
 set termguicolors
 hi Normal ctermbg=NONE
 " }}}
