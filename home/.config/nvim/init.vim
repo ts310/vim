@@ -38,6 +38,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tyru/open-browser.vim'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'tyru/qfhist.vim'
 
 " plug-in: fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
