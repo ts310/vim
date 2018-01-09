@@ -28,6 +28,7 @@ Plug 'gregsexton/gitv'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/gitignore'
 Plug 'vim-scripts/vcscommand.vim'
+Plug 'lambdalisue/gina.vim'
 
 " plug-in: editing
 Plug 'AndrewRadev/linediff.vim'
@@ -77,6 +78,7 @@ Plug 'fatih/vim-go'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs.vim'
+Plug 'digitaltoad/vim-pug'
 
 call plug#end()
 " }}}
