@@ -11,6 +11,7 @@ Plug 'embear/vim-localvimrc'
 
 " plug-in: colorscheme
 Plug 'lifepillar/vim-solarized8'
+Plug 'icymind/NeoSolarized'
 
 " plug-in: command
 Plug 'tpope/vim-rsi'
@@ -18,6 +19,7 @@ Plug 'tpope/vim-rsi'
 " plug-in: async
 Plug 'neomake/neomake'
 Plug 'tpope/vim-dispatch', { 'on': 'Dispatch' }
+Plug 'skywind3000/asyncrun.vim'
 
 " plug-in: navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -40,6 +42,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tyru/open-browser.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tyru/qfhist.vim'
+Plug 'szw/vim-maximizer'
 
 " plug-in: fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -139,8 +142,8 @@ set notimeout
 " solarized {{{
 set background=light
 let g:solarized_termcolors=256
-colorscheme solarized8_light_high
 set termguicolors
+colorscheme NeoSolarized
 hi Normal ctermbg=NONE
 " }}}
 
@@ -260,6 +263,15 @@ command! -bang -nargs=* Find
 set grepprg=git\ grep\ -I\ --line-number
 " }}}
 
+" solarized {{{
+let g:neosolarized_contrast = "high"
+let g:neosolarized_visibility = "normal"
+let g:neosolarized_vertSplitBgTrans = 1
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 0
+" }}}
+
 " fugitive {{{
 command! Gd :Gdiff
 command! Gc :Gcommit
@@ -351,4 +363,8 @@ let g:terminal_color_15 = '#eeeeec'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline#extensions#tagbar#enabled = 0
+" }}}
+
+" maximuizer {{{
+nnoremap <Leader>m :MaximizerToggle<CR>
 " }}}
