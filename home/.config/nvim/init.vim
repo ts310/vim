@@ -17,9 +17,9 @@ Plug 'icymind/NeoSolarized'
 Plug 'tpope/vim-rsi'
 
 " plug-in: async
-Plug 'neomake/neomake'
 Plug 'tpope/vim-dispatch', { 'on': 'Dispatch' }
 Plug 'skywind3000/asyncrun.vim'
+Plug 'w0rp/ale'
 
 " plug-in: navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -48,7 +48,7 @@ Plug 'szw/vim-maximizer'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " plug-in: syntax check
-Plug 'benjie/neomake-local-eslint.vim'
+"Plug 'benjie/neomake-local-eslint.vim'
 
 " plug-in: tmux
 Plug 'benmills/vimux'
@@ -136,7 +136,7 @@ set wrap
 set modelines=3
 set sh=/usr/local/bin/zsh
 set notimeout
-"set ambiwidth=double
+set ambiwidth=double
 " }}}
 
 " solarized {{{
@@ -301,17 +301,17 @@ map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]p :tabprevious<CR>
 " }}}
 
-" neomake {{{
-autocmd! BufRead,BufWritePost * Neomake
-let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_scss_enabled_makers = ['scss_lint']
-let g:neomake_swift_enabled_makers = ['swiftlint']
-let g:neomake_error_sign = {'text': '>>', 'texthl': 'Error'}
-let g:neomake_warning_sign = {'text': '>>',  'texthl': 'Todo'}
-let g:neomake_info_sign = {'text': '>>',  'texthl': 'Info'}
-let g:neomake_message_sign = {'text': '>>',  'texthl': 'Message'}
+" ale {{{
+let g:ale_fixers = {
+\   'javascript': [
+\       'prettier-eslint',
+\   ]
+\}
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 " }}}
 
 " emmet {{{
