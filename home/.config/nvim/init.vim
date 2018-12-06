@@ -88,8 +88,8 @@ call plug#end()
 
 " basic settings {{{
 set nocompatible
-set cursorline
-set colorcolumn=100
+set nocursorline
+set cc=
 set ttyfast
 set hidden
 set number
@@ -140,7 +140,7 @@ set ambiwidth=double
 " }}}
 
 " solarized {{{
-set background=light
+set background=dark
 let g:solarized_termcolors=256
 set termguicolors
 colorscheme NeoSolarized
