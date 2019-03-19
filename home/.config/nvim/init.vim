@@ -47,9 +47,6 @@ Plug 'szw/vim-maximizer'
 " plug-in: fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
-" plug-in: syntax check
-"Plug 'benjie/neomake-local-eslint.vim'
-
 " plug-in: tmux
 Plug 'benmills/vimux'
 
@@ -75,7 +72,6 @@ Plug 'tpope/vim-bundler'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'lambdatoast/elm.vim'
-Plug 'apple/swift', { 'rtp': 'utils/vim' }
 Plug 'slim-template/vim-slim'
 Plug 'fatih/vim-go'
 Plug 'kchmck/vim-coffee-script'
