@@ -92,7 +92,11 @@ set number
 set ruler
 set backspace=indent,eol,start
 set history=1000
-set clipboard+=unnamedplus
+if has('unnamedplus')
+  set clipboard& clipboard+=unnamedplus,unnamed
+else
+  set clipboard& clipboard+=unnamed
+endif
 set showcmd
 set showmode
 set visualbell t_vb=
