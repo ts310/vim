@@ -43,6 +43,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tyru/qfhist.vim'
 Plug 'szw/vim-maximizer'
+Plug 'junegunn/vim-emoji'
 
 " plug-in: fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -78,6 +79,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs.vim'
 Plug 'digitaltoad/vim-pug'
+Plug 'thalesmello/lkml.vim'
 
 call plug#end()
 " }}}
@@ -137,6 +139,8 @@ set modelines=3
 set sh=/usr/local/bin/zsh
 set notimeout
 set ambiwidth=double
+set matchtime=3
+set textwidth=0
 " }}}
 
 " solarized {{{
@@ -312,6 +316,8 @@ let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 " }}}
 
 " emmet {{{
@@ -333,9 +339,8 @@ let g:tagbar_sort = 0
 
 " vimux {{{
 let VimuxUseNearest = 1
-map <Leader>re :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
-map <Leader>rt :call VimuxRunCommand('clear; RAILS_ENV=test ./bin/rspec -fd ' . bufname("%"))<CR>
-map <Leader>ro :call VimuxRunCommand('clear; bundle exec rubocop ' . bufname("%"))<CR>
+map <Leader>re :call VimuxRunCommand('docker-compose exec spring bin/rspec -fd ' . bufname("%"))<CR>
+map <Leader>ro :call VimuxRunCommand('docker-compose exec spring bundle exec rubocop ' . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunLastCommand()<CR>
 map <Leader>ri :call VimuxPromptCommand()<CR>
 " }}}
