@@ -23,6 +23,7 @@ Plug 'w0rp/ale'
 
 " plug-in: navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'jremmen/vim-ripgrep'
 
 " plug-in: git
 Plug 'tpope/vim-fugitive'
@@ -80,6 +81,12 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'thalesmello/lkml.vim'
+Plug 'burner/vim-svelte'
+
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-bundler'
 
 call plug#end()
 " }}}
