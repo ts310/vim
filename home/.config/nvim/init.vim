@@ -82,6 +82,7 @@ Plug 'othree/yajs.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'thalesmello/lkml.vim'
 Plug 'burner/vim-svelte'
+Plug 'stephpy/vim-yaml'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -151,7 +152,7 @@ set textwidth=0
 " }}}
 
 " solarized {{{
-set background=dark
+set background=light
 let g:solarized_termcolors=256
 set termguicolors
 colorscheme NeoSolarized
@@ -163,19 +164,7 @@ hi Normal ctermbg=NONE
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 " Syntax
-autocmd FileType make       setlocal ts=8 sts=8 sw=8 noet
-autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 et
-autocmd FileType php        setlocal ts=4 sts=4 sw=4 noet foldmethod=syntax
-autocmd FileType smarty     setlocal ts=2 sts=2 sw=2 noet foldmethod=indent
-autocmd FileType java       setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
-autocmd FileType vim        setlocal ts=2 sts=2 sw=2 et
-autocmd FileType html       setlocal ts=2 sts=2 sw=2 et
-autocmd FileType css        setlocal ts=2 sts=2 sw=2 et   foldmethod=indent
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax
-autocmd FileType sh         setlocal ts=2 sts=2 sw=2 et
-autocmd FileType ruby       setlocal ts=2 sts=2 sw=2 et   foldmethod=syntax re=1
-autocmd FileType sql        setlocal ts=4 sts=4 sw=4 et   foldmethod=indent
-autocmd FileType swift      setlocal ts=4 sts=4 sw=4 et   foldmethod=syntax
+autocmd BufNewFile,BufRead justfile  setfiletype make
 autocmd BufNewFile,BufRead *.rss     setfiletype xml
 autocmd BufNewFile,BufRead *.thtml   setfiletype php
 autocmd BufNewFile,BufRead *.tpl     setfiletype smarty
