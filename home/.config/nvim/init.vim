@@ -182,6 +182,11 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
             \| endif
 autocmd QuickfixCmdPost vimgrep copen
 autocmd QuickfixCmdPost grep copen
+
+augroup quickfix
+  autocmd!
+  autocmd FileType qf setlocal nowrap
+augroup END
 " }}}
 
 " mapping {{{
