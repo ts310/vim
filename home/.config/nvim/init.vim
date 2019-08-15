@@ -94,7 +94,7 @@ call plug#end()
 
 " basic settings {{{
 set nocompatible
-set nocursorline
+set cursorline
 set cc=
 set ttyfast
 set hidden
