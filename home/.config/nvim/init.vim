@@ -83,11 +83,13 @@ Plug 'digitaltoad/vim-pug'
 Plug 'thalesmello/lkml.vim'
 Plug 'burner/vim-svelte'
 Plug 'stephpy/vim-yaml'
-
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
+
+" plug-in: performance
+Plug 'hyiltiz/vim-plugins-profile'
 
 call plug#end()
 " }}}
