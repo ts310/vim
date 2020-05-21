@@ -152,7 +152,7 @@ set textwidth=0
 " }}}
 
 " solarized {{{
-set background=light
+set background=dark
 let g:solarized_termcolors=256
 set termguicolors
 colorscheme NeoSolarized
