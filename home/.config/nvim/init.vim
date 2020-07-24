@@ -47,7 +47,8 @@ Plug 'szw/vim-maximizer'
 Plug 'junegunn/vim-emoji'
 
 " plug-in: fzf
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " plug-in: tmux
 Plug 'benmills/vimux'
@@ -221,12 +222,18 @@ let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeShowHidden = 1
 " }}}
 
+" AsyncRun {{{
+let g:asyncrun_open = 8
+" }}}
+
 " fzf {{{
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_preview_window = ''
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_prefer_tmux = 1
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -235,6 +242,7 @@ let g:fzf_colors =
   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
   \ 'hl+':     ['fg', 'Statement'],
   \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
   \ 'prompt':  ['fg', 'Conditional'],
   \ 'pointer': ['fg', 'Exception'],
   \ 'marker':  ['fg', 'Keyword'],
@@ -341,8 +349,8 @@ let g:tagbar_sort = 0
 
 " vimux {{{
 let VimuxUseNearest = 1
-map <Leader>re :call VimuxRunCommand('docker-compose exec spring bin/rspec -fd ' . bufname("%"))<CR>
-map <Leader>ro :call VimuxRunCommand('docker-compose exec spring bundle exec rubocop ' . bufname("%"))<CR>
+map <Leader>re :call VimuxRunCommand('./bin/rspec -fd ' . bufname("%"))<CR>
+map <Leader>ro :call VimuxRunCommand('bundle exec rubocop ' . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunLastCommand()<CR>
 map <Leader>ri :call VimuxPromptCommand()<CR>
 " }}}
