@@ -19,7 +19,9 @@ Plug 'tpope/vim-rsi'
 " plug-in: async
 Plug 'tpope/vim-dispatch', { 'on': 'Dispatch' }
 Plug 'skywind3000/asyncrun.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " plug-in: navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -45,6 +47,8 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'tyru/qfhist.vim'
 Plug 'szw/vim-maximizer'
 Plug 'junegunn/vim-emoji'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'chrisbra/csv.vim'
 
 " plug-in: fzf
 Plug 'junegunn/fzf'
@@ -317,17 +321,17 @@ map <silent> [Tab]p :tabprevious<CR>
 " }}}
 
 " ale {{{
-let g:ale_fixers = {
-\   'javascript': [
-\       'prettier',
-\   ]
-\}
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_enter = 0
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_set_loclist = 0
+" let g:ale_fixers = {
+" \   'javascript': [
+" \       'prettier',
+" \   ]
+" \}
+" let g:ale_fix_on_save = 1
+" let g:ale_lint_on_enter = 0
+" let g:ale_sign_column_always = 1
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '--'
+" let g:ale_set_loclist = 0
 " }}}
 
 " emmet {{{
@@ -349,8 +353,9 @@ let g:tagbar_sort = 0
 
 " vimux {{{
 let VimuxUseNearest = 1
-map <Leader>re :call VimuxRunCommand('./bin/rspec -fd ' . bufname("%"))<CR>
-map <Leader>ro :call VimuxRunCommand('bundle exec rubocop ' . bufname("%"))<CR>
+map <Leader>re :call VimuxRunCommand('rspec -fd ' . bufname("%") . ':' . line("."))<CR>
+map <Leader>rk :call VimuxRunCommand('rspec -fd ' . bufname("%"))<CR>
+map <Leader>ro :call VimuxRunCommand('rubocop -a ' . bufname("%"))<CR>
 map <Leader>rl :call VimuxRunLastCommand()<CR>
 map <Leader>ri :call VimuxPromptCommand()<CR>
 " }}}
